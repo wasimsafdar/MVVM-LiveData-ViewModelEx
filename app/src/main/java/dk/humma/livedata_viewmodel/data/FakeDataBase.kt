@@ -8,8 +8,8 @@ class FakeDataBase private constructor(){
     companion object {
         @Volatile private var instance : FakeDataBase? = null
 
-        fun getInstance() {
-            instance?: synchronized(this){
+        fun getInstance(): FakeDataBase {
+            return instance?: synchronized(this){
                 instance?: FakeDataBase().also { instance = it }
             }
         }
